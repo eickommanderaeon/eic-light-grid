@@ -1,0 +1,36 @@
+name: web-ci
+on:
+  push:
+    paths:
+      - "web/**"
+      - ".github/workflows/ci-web.yml"
+  pull_request:
+    paths:
+      - "web/**"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - name: Install
+        working-directory: web
+        run: pnpm install --frozen-lockfile=false
+      - name: Build
+        working-directory: web
+        env:
+          NEXT_PUBLIC_CHAIN_NAME: "Sepolia"
+          NEXT_PUBLIC_CHAIN_ID: "11155111"
+          NEXT_PUBLIC_RPC_URL: "https://example.invalid" # CI-safe placeholder
+          NEXT_PUBLIC_BLOCK_EXPLORER: "https://sepolia.etherscan.io"
+          NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID: "CI_PLACEHOLDER"
+          NEXT_PUBLIC_APP_NAME: "EIC Light Grid"
+          NEXT_PUBLIC_APP_URL: "https://example.invalid"
+        run: pnpm build

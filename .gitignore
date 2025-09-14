@@ -1,0 +1,14 @@
+.env
+.env.*.local
+*.key
+*.pem
+*.p12
+*.keystore
+*.secret
+*.sqlite
+*.zip
+*.csv
+node_modules/
+dist/
+.out/
+.cache/
