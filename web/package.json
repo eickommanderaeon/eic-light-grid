@@ -1,19 +1,20 @@
-{
-  "name": "eic-light-grid-web",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "14.2.5",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
-  },
-  "devDependencies": {
-    "typescript": "5.6.2",
-    "@types/react": "18.3.3",
-    "@types/node": "20.14.10"
-  }
+﻿{
+    "name":  "eic-light-grid-web",
+    "private":  true,
+    "scripts":  {
+                    "dev":  "next dev",
+                    "build":  "next build",
+                    "start":  "next start",
+                    "precommit":  "pnpm run typecheck --if-present \u0026\u0026 pnpm run lint --if-present"
+                },
+    "dependencies":  {
+                         "next":  "14.2.5",
+                         "react":  "18.3.1",
+                         "react-dom":  "18.3.1"
+                     },
+    "devDependencies":  {
+                            "typescript":  "5.6.2",
+                            "@types/react":  "18.3.3",
+                            "@types/node":  "20.14.10"
+                        }
 }
