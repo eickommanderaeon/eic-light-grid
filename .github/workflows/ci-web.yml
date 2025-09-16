@@ -15,14 +15,15 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9
-      - name: Use Node 20
+      - name: Use Node (from .nvmrc)
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: "pnpm"
+          node-version-file: web/.nvmrc
+          cache: pnpm
+          cache-dependency-path: web/pnpm-lock.yaml
       - name: Install
         working-directory: web
-        run: pnpm install --frozen-lockfile=false
+        run: pnpm install --no-frozen-lockfile
       - name: Build
         working-directory: web
         env:
