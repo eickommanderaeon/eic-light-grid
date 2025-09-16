@@ -5,7 +5,8 @@
                     "dev":  "next dev",
                     "build":  "next build",
                     "start":  "next start",
-                    "precommit":  "pnpm run typecheck --if-present \u0026\u0026 pnpm run lint --if-present"
+                    "precommit":  "pnpm run typecheck --if-present \u0026\u0026 pnpm run lint --if-present",
+                    "setup-api": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/fix-and-run-api.ps1"
                 },
     "dependencies":  {
                          "next":  "14.2.5",
