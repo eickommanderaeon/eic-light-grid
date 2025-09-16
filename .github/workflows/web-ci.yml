@@ -18,10 +18,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Use Node 20
+      - name: Use Node (from .nvmrc)
         uses: actions/setup-node@v4
-        with:
-          node-version: "20"
+          node-version: web/.nvmrc
           cache: pnpm
           cache-dependency-path: web/pnpm-lock.yaml
       - name: Setup pnpm
@@ -37,3 +36,4 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: "1"
         run: pnpm run build
+
