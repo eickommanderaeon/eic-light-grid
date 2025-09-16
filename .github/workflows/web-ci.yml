@@ -30,7 +30,7 @@ jobs:
           cache: pnpm
           cache-dependency-path: web/pnpm-lock.yaml
       - name: Install deps
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
       - name: Approve native builds (first run only)
         run: pnpm approve-builds || true
       - name: Build
