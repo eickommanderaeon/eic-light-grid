@@ -1,4 +1,6 @@
 # EIC Light Grid
+[![web-ci](https://github.com/eickommanderaeon/eic-light-grid/actions/workflows/web-ci.yml/badge.svg)](https://github.com/eickommanderaeon/eic-light-grid/actions/workflows/web-ci.yml)
+
 
 Public trunk for the Energy Intelligence Coin (EIC) ecosystem:
 - **contracts/** — on-chain components (token, treasury, interfaces)
