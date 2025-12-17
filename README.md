@@ -9,7 +9,25 @@ Public trunk for the Energy Intelligence Coin (EIC) ecosystem:
 - **scripts/** — deploy/verify templates (keyless)
 
 > Security model: No secrets or live CSVs are ever committed. Use env vars and GitHub Actions Secrets.
+## Design Foundations
 
+EIC is built doctrine-first.
+
+Before any token mechanics, automation, or incentives, the system is constrained by
+documented lessons from prior crypto failures and a human–AI aligned participation model.
+
+### Canonical References
+- **Failure Analysis & POI Foundations**  
+  `docs/EIC_Failure_Analysis_and_POI_Foundations.md`
+
+- **Proof of Insight (POI) — Genesis**  
+  `docs/poi/POI_GENESIS.md`
+
+- **Codex I – The Living Signal**  
+  Interpretive doctrine governing AI, human, and hybrid nodes
+
+These documents define intent and constraints.  
+Implementation follows only after validation.
 ## Architecture
 - **Contracts**: Foundry (Solc 0.8.x), OZ libraries where applicable.
 - **Frontend**: Next.js App Router + RainbowKit/Viem.
