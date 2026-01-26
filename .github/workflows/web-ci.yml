@@ -1,4 +1,4 @@
-﻿name: web-ci
+name: web-ci
 on:
   push:
     branches: [ main ]
@@ -18,24 +18,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: false
-      - name: Use Node (from .nvmrc)
+      - name: Use Node 20.x
         uses: actions/setup-node@v4
         with:
-          node-version-file: web/.nvmrc
-          cache: pnpm
-          cache-dependency-path: web/pnpm-lock.yaml
+          node-version: "20.x"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
       - name: Install deps
-        run: pnpm install --frozen-lockfile
-      - name: Approve native builds (first run only)
-        run: pnpm approve-builds || true
+        run: npm ci
       - name: Build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
-        run: pnpm run build
-
+        run: npm run build
 
