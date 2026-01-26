@@ -5,9 +5,10 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "precommit": "pnpm run typecheck --if-present && pnpm run lint --if-present",
+        "precommit": "npm run typecheck --if-present && npm run lint --if-present",
         "setup-api": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/fix-and-run-api.ps1"
     },
+    "packageManager": "npm@10.8.2",
     "dependencies": {
         "next": "^14.2.35",
         "react": "18.3.1",

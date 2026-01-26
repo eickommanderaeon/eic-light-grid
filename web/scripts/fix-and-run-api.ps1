@@ -7,7 +7,7 @@ function Fail($m){ throw $m }
 
 # Versions
 Info "Node: $(node -v)"
-if (Get-Command pnpm -ErrorAction SilentlyContinue) { Info "pnpm: $(pnpm -v)" } else { Fail "pnpm not found. Install: https://pnpm.io/installation" }
+if (Get-Command npm -ErrorAction SilentlyContinue) { Info "npm: $(npm -v)" } else { Fail "npm not found. Install Node.js: https://nodejs.org/" }
 
 # FFmpeg
 if (-not (Get-Command ffmpeg -ErrorAction SilentlyContinue)) {
@@ -39,7 +39,7 @@ $pkg.scripts = $pkg.scripts ?? @{}
 if (-not $pkg.scripts.api) { $pkg.scripts.api = "tsx src/server/api.ts" }
 $needTsx = -not (Test-Path ".\node_modules\.bin\tsx")
 $needTypes = -not (Test-Path ".\node_modules\typescript") -or -not (Test-Path ".\node_modules\@types\node")
-if ($needTsx -or $needTypes) { Info "Adding dev deps: tsx typescript @types/node"; pnpm add -D tsx typescript @types/node }
+if ($needTsx -or $needTypes) { Info "Adding dev deps: tsx typescript @types/node"; npm install --save-dev tsx typescript @types/node }
 
 # Persist any script changes
 $pkg | ConvertTo-Json -Depth 10 | Set-Content -Encoding UTF8 $pkgPath
@@ -80,8 +80,8 @@ if (-not (Test-Path ".\.env")) {
 }
 
 # Strict install (uses committed lockfile)
-pnpm install --frozen-lockfile
+npm ci
 
 if ($NoRun) { Info "Checks complete. Skipping API start (NoRun)."; exit 0 }
-Info "Starting API: pnpm run api"
-pnpm run api
+Info "Starting API: npm run api"
+npm run api
